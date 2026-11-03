@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 300" width="900" height="300" role="img" aria-label="Panna, a cute robot reading an old register">
+  <style>
+    .float { animation: float 3.4s ease-in-out infinite; }
+    .eye { animation: blink 5s infinite; transform-box: fill-box; transform-origin: center; }
+    .ball { animation: pulse 1.8s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+    .page { animation: page 3.6s cubic-bezier(.45,0,.55,1) infinite; transform-origin: 170px 0; }
+    .arm { animation: wave 2.8s ease-in-out infinite; transform-box: fill-box; transform-origin: 0% 0%; }
+    .star { animation: twinkle 2.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+    .s2 { animation-delay: .7s; } .s3 { animation-delay: 1.3s; } .s4 { animation-delay: 1.9s; }
+    .title { animation: rise .8s ease-out both; }
+    .sub { animation: rise .8s .25s ease-out both; }
+    .chip { animation: rise .7s ease-out both; }
+    .c2 { animation-delay: .45s; } .c3 { animation-delay: .6s; } .c1 { animation-delay: .3s; }
+    @keyframes float { 0%,100% { transform: translateY(-5px); } 50% { transform: translateY(6px); } }
+    @keyframes blink { 0%,56%,60%,91%,95%,100% { transform: scaleY(1); } 58%,93% { transform: scaleY(.06); } }
+    @keyframes pulse { 0%,100% { transform: scale(.9); } 50% { transform: scale(1.15); } }
+    @keyframes page { 0%,50% { transform: scaleX(1); } 80%,100% { transform: scaleX(-1); } }
+    @keyframes wave { 0%,70%,100% { transform: rotate(0); } 78%,92% { transform: rotate(-38deg); } 85% { transform: rotate(-12deg); } }
+    @keyframes twinkle { 0%,100% { opacity: .1; transform: scale(.4); } 50% { opacity: 1; transform: scale(1) rotate(45deg); } }
+    @keyframes rise { from { opacity: 0; transform: translateY(14px); } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  </style>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8fd3ff"/><stop offset=".6" stop-color="#b9c8ff"/><stop offset="1" stop-color="#ffd6ec"/></linearGradient>
+    <linearGradient id="shell" x1=".2" y1="0" x2=".7" y2="1"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#d3e2ff"/></linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#172460"/><stop offset="1" stop-color="#0a1138"/></linearGradient>
+  </defs>
+  <rect width="900" height="300" rx="22" fill="url(#sky)"/>
+  <g fill="#fff">
+    <path class="star" d="M60 50Q60 62 72 62Q60 62 60 74Q60 62 48 62Q60 62 60 50Z"/>
+    <path class="star s2" d="M292 34Q292 44 302 44Q292 44 292 54Q292 44 282 44Q292 44 292 34Z"/>
+    <path class="star s3" d="M846 44Q846 56 858 56Q846 56 846 68Q846 56 834 56Q846 56 846 44Z"/>
+    <path class="star s4" d="M300 232Q300 240 308 240Q300 240 300 248Q300 240 292 240Q300 240 300 232Z"/>
+  </g>
+  <ellipse cx="170" cy="278" rx="74" ry="8" fill="#1c3278" opacity=".16"/>
+  <g class="float">
+    <g transform="translate(50 12) scale(2)">
+      <path d="M60 18V9" stroke="#a9c0f4" stroke-width="3" stroke-linecap="round"/>
+      <circle class="ball" cx="60" cy="6" r="5" fill="#3f7bff"/>
+      <rect x="14" y="36" width="12" height="23" rx="6" fill="#3f7bff"/><rect x="94" y="36" width="12" height="23" rx="6" fill="#3f7bff"/>
+      <rect x="41" y="68" width="38" height="44" rx="18" fill="url(#shell)" stroke="#a9c0f4"/>
+      <g class="arm"><path d="M77 81C85 83 89 89 89 96" fill="none" stroke="#a9c0f4" stroke-width="7" stroke-linecap="round"/><circle cx="89" cy="100" r="5.800" fill="#fff" stroke="#a9c0f4"/></g>
+      <path d="M31 96C31 89 35 83 43 81" fill="none" stroke="#a9c0f4" stroke-width="7" stroke-linecap="round"/>
+      <rect x="23" y="17" width="74" height="56" rx="26" fill="url(#shell)" stroke="#a9c0f4"/>
+      <rect x="30.500" y="26.500" width="59" height="37" rx="18" fill="url(#glass)"/>
+      <ellipse cx="39" cy="54" rx="4.800" ry="2.800" fill="#ff86ad"/><ellipse cx="81" cy="54" rx="4.800" ry="2.800" fill="#ff86ad"/>
+      <ellipse class="eye" cx="48" cy="44" rx="6.400" ry="7.800" fill="#5ff0ff"/><ellipse class="eye" cx="72" cy="44" rx="6.400" ry="7.800" fill="#5ff0ff"/>
+      <path d="M54 54Q60 59.500 66 54" fill="none" stroke="#5ff0ff" stroke-width="2.400" stroke-linecap="round"/>
+      <path d="M28 91L60 96L92 91V111L60 116L28 111Z" fill="#ffd23f" stroke="#eeb015" stroke-linejoin="round"/>
+      <path d="M32 90C42 88.500 53 90.500 60 95V112C53 107.500 42 106 32 107.500Z" fill="#fff" stroke="#dfe5f4"/>
+      <path d="M88 90C78 88.500 67 90.500 60 95V112C67 107.500 78 106 88 107.500Z" fill="#fff" stroke="#dfe5f4"/>
+      <path class="page" style="transform-origin:60px 100px" d="M88 90C78 88.500 67 90.500 60 95V112C67 107.500 78 106 88 107.500Z" fill="#fbfcff" stroke="#c9d4ee"/>
+    </g>
+  </g>
+  <text class="title" x="345" y="125" font-family="Georgia, 'Times New Roman', serif" font-size="74" font-weight="700" fill="#1f3a8a">Panna</text>
+  <text class="sub" x="348" y="166" font-family="Georgia, serif" font-style="italic" font-size="23" fill="#24406f">A cute robot that reads your document,</text>
+  <text class="sub" x="348" y="196" font-family="Georgia, serif" font-style="italic" font-size="23" fill="#24406f">and answers only from what is written in it.</text>
+  <g font-family="Verdana, sans-serif" font-size="14" font-weight="700" text-anchor="middle">
+    <g class="chip c1"><rect x="348" y="222" width="104" height="32" rx="16" fill="#ffd84d"/><text x="400" y="243" fill="#1c2a5e">100% local</text></g>
+    <g class="chip c2"><rect x="462" y="222" width="130" height="32" rx="16" fill="#ff9fc4"/><text x="527" y="243" fill="#1c2a5e">No paid API key</text></g>
+    <g class="chip c3"><rect x="602" y="222" width="150" height="32" rx="16" fill="#7fe0c3"/><text x="677" y="243" fill="#1c2a5e">Shows its sources</text></g>
+  </g>
+</svg>

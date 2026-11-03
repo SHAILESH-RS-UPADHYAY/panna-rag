@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 250" width="900" height="250" role="img" aria-label="Document flow: extract, chunk, embed, store. Question flow: embed, FAISS search, score gate, prompt, Ollama, answer with sources.">
+  <style>
+    text { font-family: Verdana, sans-serif; }
+    .n { font-size: 13px; font-weight: 700; fill: #1c2a5e; text-anchor: middle; }
+    .h { font-size: 13px; font-weight: 700; fill: #2f6bff; }
+    .line { fill: none; stroke: #2f6bff; stroke-width: 3; stroke-dasharray: 3 11; stroke-linecap: round; animation: run 1s linear infinite; }
+    .box { animation: glow 4s ease-in-out infinite; }
+    .d1 { animation-delay: .6s; } .d2 { animation-delay: 1.2s; } .d3 { animation-delay: 1.8s; } .d4 { animation-delay: 2.4s; } .d5 { animation-delay: 3s; }
+    @keyframes run { to { stroke-dashoffset: -14; } }
+    @keyframes glow { 0%,18%,100% { opacity: 1; } 9% { opacity: .55; } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  </style>
+  <rect width="900" height="250" rx="18" fill="#fffbef"/>
+  <text class="h" x="30" y="32">A DOCUMENT GOES IN</text>
+  <path class="line" d="M130 75H770"/>
+  <g>
+    <rect class="box" x="30" y="48" width="170" height="54" rx="10" fill="#ffd84d"/><text class="n" x="115" y="80">Extract (pypdf)</text>
+    <rect class="box d1" x="250" y="48" width="170" height="54" rx="10" fill="#ff9fc4"/><text class="n" x="335" y="80">Chunk + overlap</text>
+    <rect class="box d2" x="470" y="48" width="170" height="54" rx="10" fill="#7fe0c3"/><text class="n" x="555" y="80">Embed (MiniLM)</text>
+    <rect class="box d3" x="690" y="48" width="180" height="54" rx="10" fill="#9cc4ff"/><text class="n" x="780" y="80">Store in FAISS</text>
+  </g>
+  <text class="h" x="30" y="146">A QUESTION COMES OUT AS AN ANSWER</text>
+  <path class="line" d="M100 190H800"/>
+  <g>
+    <rect class="box" x="30" y="162" width="125" height="54" rx="10" fill="#7fe0c3"/><text class="n" x="92" y="194">Embed</text>
+    <rect class="box d1" x="179" y="162" width="125" height="54" rx="10" fill="#9cc4ff"/><text class="n" x="241" y="194">Search</text>
+    <rect class="box d2" x="328" y="162" width="125" height="54" rx="10" fill="#ffb3b3"/><text class="n" x="390" y="194">Score gate</text>
+    <rect class="box d3" x="477" y="162" width="125" height="54" rx="10" fill="#ff9fc4"/><text class="n" x="539" y="194">Prompt</text>
+    <rect class="box d4" x="626" y="162" width="110" height="54" rx="10" fill="#ffd84d"/><text class="n" x="681" y="194">Ollama</text>
+    <rect class="box d5" x="760" y="162" width="110" height="54" rx="10" fill="#c8b6ff"/><text class="n" x="815" y="194">Answer</text>
+  </g>
+</svg>
