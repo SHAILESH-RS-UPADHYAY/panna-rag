@@ -172,7 +172,7 @@
 .e-meta { margin: 6px 0 0 26px; font-family: 'Special Elite', monospace; font-size: 12px; line-height: 1.4; color: var(--ink-soft); }
 
 /* ── A refusal: the rubber stamp ── */
-.refused { position: absolute; right: 2%; top: -6px; padding: .18em .6em; border: 3px double var(--stamp); border-radius: 5px; color: var(--stamp); font-family: 'Special Elite', monospace; font-size: 16px; letter-spacing: .08em; text-transform: uppercase; rotate: -7deg; background: color-mix(in srgb, var(--paper) 60%, transparent); opacity: .9; -webkit-mask: url(../img/grain.png); }
+.refused { position: absolute; right: 2%; top: -6px; padding: .18em .6em; border: 3px double var(--stamp); border-radius: 5px; color: var(--stamp); font-family: 'Special Elite', monospace; font-size: 16px; letter-spacing: .08em; text-transform: uppercase; rotate: -7deg; background: color-mix(in srgb, var(--paper) 60%, transparent); opacity: .9; }
 .refused.thump { animation: thump .42s cubic-bezier(.3, 1.3, .5, 1) both; }
 @keyframes thump { 0% { transform: scale(2.6); opacity: 0; } 62% { transform: scale(.94); opacity: 1; } 100% { transform: scale(1); } }
 .a:has(.refused) { padding-bottom: 26px; }
