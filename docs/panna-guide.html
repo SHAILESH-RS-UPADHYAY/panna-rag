@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Panna Guide</title>
+<style>
+  :root { --ink: #1f2a55; --soft: #56608a; --blue: #2f6bff; --paper: #fffbef; --yellow: #ffd84d; --pink: #ff9fc4; --mint: #7fe0c3; --sky: #dcecff; --line: #e8dfc8; --red: #d9363e; }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; color: var(--ink); background: linear-gradient(135deg, #bfe5ff, #dcd9ff 60%, #ffe0f0); background-attachment: fixed; font: 17px/1.65 "Segoe UI", "Nirmala UI", system-ui, sans-serif; }
+  main { max-width: 800px; margin: 0 auto; padding: 16px; }
+  .hero { text-align: center; padding: 28px 16px 12px; }
+  .hero svg { width: 150px; height: 160px; animation: float 3.2s ease-in-out infinite; }
+  @keyframes float { 50% { transform: translateY(9px); } }
+  .eye { animation: blink 5s infinite; transform-box: fill-box; transform-origin: center; }
+  @keyframes blink { 0%, 91%, 95%, 100% { transform: scaleY(1); } 93% { transform: scaleY(.06); } }
+  h1 { margin: 4px 0; font: 700 44px/1.1 Georgia, serif; color: #1f3a8a; }
+  h2 { margin: 0 0 8px; font: 700 26px/1.2 Georgia, serif; color: #1f3a8a; text-wrap: balance; }
+  h3 { margin: 18px 0 4px; font-size: 18px; }
+  p { margin: 8px 0; }
+  section { background: var(--paper); border-radius: 18px; padding: 20px; margin: 16px 0; box-shadow: 0 4px 16px rgba(40, 60, 130, .13); }
+  nav { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+  nav a { padding: 6px 13px; border-radius: 99px; background: #fff; color: var(--ink); text-decoration: none; font-size: 15px; box-shadow: 0 1px 4px rgba(40, 60, 130, .2); }
+  nav a:hover { background: var(--yellow); }
+  a { color: var(--blue); overflow-wrap: anywhere; }
+  .download { display: inline-block; margin: 6px 6px 6px 0; padding: 12px 20px; border-radius: 12px; background: var(--blue); color: #fff; font-weight: 700; text-decoration: none; }
+  .download.alt { background: var(--ink); }
+  .step { display: flex; gap: 12px; margin: 16px 0; }
+  .num { flex: none; width: 34px; height: 34px; display: grid; place-items: center; border-radius: 50%; background: var(--yellow); font-weight: 700; }
+  .step > div { min-width: 0; flex: 1; }
+  .cmd { display: flex; align-items: center; gap: 8px; margin: 6px 0; padding: 9px 9px 9px 13px; border-radius: 10px; background: #18204a; color: #e8f0ff; }
+  .cmd code { flex: 1; min-width: 0; overflow-wrap: anywhere; font: 15px/1.4 Consolas, monospace; }
+  .cmd button { flex: none; min-height: 34px; padding: 3px 12px; border: 0; border-radius: 7px; background: var(--yellow); color: var(--ink); font: 700 14px "Segoe UI", sans-serif; cursor: pointer; }
+  .what { margin: 0; color: var(--soft); font-size: 15.5px; }
+  .note { margin: 12px 0; padding: 10px 14px; border-radius: 10px; background: var(--sky); }
+  .warn { background: #ffe6e6; }
+  .word { margin: 10px 0; padding: 10px 14px; border-left: 5px solid var(--mint); background: #fff; border-radius: 8px; }
+  .word b { display: block; font-size: 18px; }
+  .story { margin: 12px 0; padding-left: 18px; border-left: 3px dashed var(--pink); }
+  table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 15.5px; }
+  th, td { padding: 8px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: #1f3a8a; }
+  details { margin: 8px 0; padding: 9px 13px; background: #fff; border-radius: 10px; }
+  summary { font-weight: 700; cursor: pointer; }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; scroll-behavior: auto !important; } }
+</style>
+</head>
+<body>
+<main>
+  <header class="hero">
+    <svg viewBox="0 0 120 128" aria-hidden="true">
+      <path d="M60 18V9" stroke="#a9c0f4" stroke-width="3" stroke-linecap="round"/><circle cx="60" cy="6" r="5" fill="#3f7bff"/>
+      <rect x="14" y="36" width="12" height="23" rx="6" fill="#3f7bff"/><rect x="94" y="36" width="12" height="23" rx="6" fill="#3f7bff"/>
+      <rect x="41" y="68" width="38" height="44" rx="18" fill="#e8f0ff" stroke="#a9c0f4"/>
+      <rect x="23" y="17" width="74" height="56" rx="26" fill="#fff" stroke="#a9c0f4"/><rect x="30.5" y="26.5" width="59" height="37" rx="18" fill="#121c50"/>
+      <ellipse class="eye" cx="48" cy="44" rx="6.4" ry="7.8" fill="#5ff0ff"/><ellipse class="eye" cx="72" cy="44" rx="6.4" ry="7.8" fill="#5ff0ff"/>
+      <path d="M54 54Q60 59.5 66 54" fill="none" stroke="#5ff0ff" stroke-width="2.4" stroke-linecap="round"/>
+      <path d="M28 91L60 96L92 91V111L60 116L28 111Z" fill="#ffd23f"/><path d="M32 90C42 88.5 53 90.5 60 95V112C53 107.5 42 106 32 107.5Z" fill="#fff"/><path d="M88 90C78 88.5 67 90.5 60 95V112C67 107.5 78 106 88 107.5Z" fill="#fff"/>
+    </svg>
+    <h1>Panna ki poori kahani</h1>
+    <p>Bilkul simple Hinglish mein. Coding aani zaroori nahi hai.</p>
+    <nav>
+      <a href="#setup">Setup</a><a href="#kya">Panna kya hai</a><a href="#pdf">PDF ne kya bola</a><a href="#kahani">Kahani</a><a href="#shabd">Mushkil shabd</a><a href="#demo">Demo</a><a href="#sawal">Sir ke sawal</a><a href="#dikkat">Dikkat</a>
+    </nav>
+  </header>
+
+  <section id="setup">
+    <h2>Pehle yeh download karo</h2>
+    <p>Teen cheezein chahiye. Teeno free hain. Demo se pehle hi install kar lena, kyunki net aur time lagega.</p>
+    <a class="download" href="https://ollama.com/download">Ollama download karo</a>
+    <a class="download alt" href="https://www.python.org/downloads/">Python download karo</a>
+    <a class="download alt" href="https://git-scm.com/download/win">Git download karo</a>
+    <div class="note"><b>Python install karte waqt:</b> pehli screen par neeche <b>"Add python.exe to PATH"</b> par tick zaroor lagana. Version 3.13 chunna, project isi par test hua hai.</div>
+
+    <h2 style="margin-top:24px">Terminal kaise kholein</h2>
+    <p>Terminal ek kaali ya neeli window hai jisme hum computer ko likhkar kaam bolte hain. Start menu mein <b>PowerShell</b> likho aur khol lo.</p>
+    <p>Neeche har command ke saath <b>Copy</b> button hai. Copy dabao, terminal mein right-click karke paste karo, phir <b>Enter</b> dabao. Ek command khatam ho jaye, tab agli chalana.</p>
+
+    <h2 style="margin-top:24px">Har command, ek-ek karke</h2>
+    <div class="step"><span class="num">1</span><div><div class="cmd"><code>ollama --version</code><button type="button">Copy</button></div><p class="what">Check karta hai ki Ollama install hua ya nahi. Version number dikhe to sab theek hai.</p></div></div>
+    <div class="step"><span class="num">2</span><div><div class="cmd"><code>ollama pull llama3.2</code><button type="button">Copy</button></div><p class="what">AI model download karta hai, lagbhag 2 GB. Yeh sabse lamba step hai.</p></div></div>
+    <div class="step"><span class="num">3</span><div><div class="cmd"><code>ollama run llama3.2 "hello"</code><button type="button">Copy</button></div><p class="what">Model se hello bolta hai. Jawab aa jaye to model chal raha hai.</p></div></div>
+    <div class="step"><span class="num">4</span><div><div class="cmd"><code>git clone https://github.com/SHAILESH-RS-UPADHYAY/panna-rag.git</code><button type="button">Copy</button></div><p class="what">Project ka poora code GitHub se tumhare laptop par copy karta hai. "panna-rag" naam ka folder ban jayega.</p></div></div>
+    <div class="step"><span class="num">5</span><div><div class="cmd"><code>cd panna-rag</code><button type="button">Copy</button></div><p class="what">Terminal ko us folder ke andar le jata hai.</p></div></div>
+    <div class="step"><span class="num">6</span><div><div class="cmd"><code>python -m venv .venv</code><button type="button">Copy</button></div><p class="what">Is project ke liye ek alag dabba banata hai, taaki iska saaman baaki computer se na mile.</p></div></div>
+    <div class="step"><span class="num">7</span><div><div class="cmd"><code>.venv\Scripts\activate</code><button type="button">Copy</button></div><p class="what">Us dabbe ko on karta hai. Line ke shuru mein (.venv) dikhne lagega.</p></div></div>
+    <div class="step"><span class="num">8</span><div><div class="cmd"><code>pip install -r requirements.txt</code><button type="button">Copy</button></div><p class="what">Project ko jo Python libraries chahiye, sab download karta hai. Thoda time lagega.</p></div></div>
+    <div class="step"><span class="num">9</span><div><div class="cmd"><code>python run.py</code><button type="button">Copy</button></div><p class="what">App start karta hai. Browser apne aap khulega. Na khule to yeh address kholo: <b>http://127.0.0.1:7860</b></p></div></div>
+    <div class="note"><b>Terminal band mat karna.</b> Jab tak app use kar rahi ho, yeh window khuli rehni chahiye. Band karne par app ruk jayega.</div>
+
+    <h3>Agli baar sirf itna</h3>
+    <p>Terminal kholkar yeh teen command chalao:</p>
+    <div class="cmd"><code>cd panna-rag</code><button type="button">Copy</button></div>
+    <div class="cmd"><code>.venv\Scripts\activate</code><button type="button">Copy</button></div>
+    <div class="cmd"><code>python run.py</code><button type="button">Copy</button></div>
+  </section>
+
+  <section id="kya">
+    <h2>Panna hai kya?</h2>
+    <p>Socho tumhare paas 100 page ki book hai aur ek sawal ka jawab chahiye. Ek dost hai jo book padhkar sahi page dhoondta hai, usi se jawab deta hai, aur page dikhakar kehta hai: "yeh dekho, yahan likha hai." Book mein na ho to seedha bolta hai: "book mein nahi hai."</p>
+    <p><b>Panna wahi dost hai</b>, ek pyara sa robot. Tum PDF ya TXT file do, sawal poocho, aur woh sirf usi file se jawab dega. Panna ka matlab hai page, isliye app ek purane phate register jaisi dikhti hai.</p>
+    <p>Aise chatbot ko <b>RAG chatbot</b> kehte hain.</p>
+  </section>
+
+  <section id="pdf">
+    <h2>Assignment PDF ne kya bola, aur kahan hua</h2>
+    <table>
+      <tr><th>PDF ne bola</th><th>Panna mein kahan</th></tr>
+      <tr><td>Gradio ya Streamlit se chatbot</td><td>Gradio use hua. Chat tab</td></tr>
+      <tr><td>PDF ya TXT upload (2 page se zyada)</td><td>Papers tab</td></tr>
+      <tr><td>Text nikaalo, chhote tukde karo</td><td>Papers tab, Chunk Explorer</td></tr>
+      <tr><td>Free Sentence Transformers model se embeddings</td><td>Engine tab, Retrieval Lab</td></tr>
+      <tr><td>FAISS ya ChromaDB mein store aur search</td><td>FAISS use hua. Engine tab</td></tr>
+      <tr><td>Ollama se free local model</td><td>Keys tab mein status dikhta hai</td></tr>
+      <tr><td>Mile hue text se jawab do</td><td>Chat tab</td></tr>
+      <tr><td>Source text dikhao</td><td>Har jawab ke neeche, aur left page par</td></tr>
+      <tr><td>Prompt: jo likha nahi, woh mat banao</td><td>Engine tab, "The prompt"</td></tr>
+      <tr><td>5 sawal test karo, ek aisa jo document mein na ho</td><td>Marks tab, Test Bench</td></tr>
+    </table>
+    <h3>Marks (kul 20)</h3>
+    <table>
+      <tr><th>Cheez</th><th>Marks</th></tr>
+      <tr><td>Chatbot Interface</td><td>3</td></tr><tr><td>Document Processing</td><td>4</td></tr><tr><td>Embeddings and Retrieval</td><td>5</td></tr><tr><td>RAG Prompt and Response</td><td>5</td></tr><tr><td>Testing and Demonstration</td><td>3</td></tr>
+    </table>
+    <p><b>Submit karna hai:</b> Python code, sample document, screenshots, aur 5 sawal unke jawabon ke saath.</p>
+  </section>
+
+  <section id="kahani">
+    <h2>Yeh kaise kaam karta hai: ek kahani</h2>
+    <p>Maan lo ek library hai, aur usme hamara robot kaam karta hai.</p>
+    <div class="story">
+      <h3>1. Book aayi (Upload)</h3><p>Tumne robot ko sample handbook di.</p>
+      <h3>2. Padhna (Extract)</h3><p>Robot PDF ke har page se text nikaal leta hai. Yeh kaam <b>pypdf</b> karta hai.</p>
+      <h3>3. Tukde karna (Chunking)</h3><p>Poori book ek saath yaad rakhna mushkil hai, isliye robot use chhote tukdon mein kaat deta hai, har tukda lagbhag 500 akshar ka. Har tukde mein pichhle tukde ka thoda hissa bhi rehta hai (80 akshar), taaki koi baat beech se na kate. Isko <b>overlap</b> kehte hain.</p>
+      <h3>4. Numbers banana (Embedding)</h3><p>Computer shabd nahi, numbers samajhta hai. <b>Sentence Transformers</b> har tukde ko 384 numbers mein badal deta hai. Jinka matlab milta-julta ho, unke numbers bhi paas-paas hote hain. "Late fine" aur "der se lautane ka paisa" paas aa jayenge.</p>
+      <h3>5. Almari mein rakhna (FAISS)</h3><p><b>FAISS</b> ek smart almari hai jo un numbers ko rakhti hai aur milta-julta tukda turant dhoondh deti hai.</p>
+      <h3>6. Tumne sawal poocha</h3><p>Sawal bhi numbers mein badalta hai. FAISS sabse milte-julte 4 tukde nikaal deta hai.</p>
+      <h3>7. Pehla pehredaar (Score gate)</h3><p>Har tukde ka ek score hota hai ki woh sawal se kitna milta hai. Agar sab bahut door hain, to robot AI ko bulata hi nahi aur bol deta hai: document mein nahi mila.</p>
+      <h3>8. Doosra pehredaar (Prompt)</h3><p>AI ko saaf rules diye jaate hain: sirf in tukdon se jawab do, apne se kuch mat banao, nahi mile to mana kar do. Yeh rules hi <b>prompt</b> hain.</p>
+      <h3>9. Jawab (Ollama)</h3><p><b>Ollama</b> par chal raha model tukde padhkar jawab likhta hai. Jawab screen par shabd-shabd aata hai, aur neeche woh text dikhta hai jahan se jawab aaya.</p>
+    </div>
+  </section>
+
+  <section id="shabd">
+    <h2>Mushkil shabd, aasan matlab</h2>
+    <div class="word"><b>Ollama</b>Ek free app jo AI model ko tumhare hi laptop par chalata hai. ChatGPT internet par kisi aur ke computer par chalta hai, jabki Ollama tumhare computer par. PDF ne yahi maanga hai.</div>
+    <div class="word"><b>llama3.2</b>Woh AI model jo Ollama chalata hai. Ollama gaadi hai to llama3.2 uska driver.</div>
+    <div class="word"><b>API key</b>Ek lamba secret password, jisse koi app kisi online service (jaise Gemini) ko use kar sakti hai. Isko kisi ko dena nahi chahiye. <b>Panna ko API key ki zaroorat nahi hai</b>, kyunki Ollama local chalta hai. Keys tab mein yeh sirf ek extra option hai.</div>
+    <div class="word"><b>RAG</b>Retrieval-Augmented Generation. Pehle dhoondo (retrieve), phir usi se jawab banao (generate).</div>
+    <div class="word"><b>Chunk</b>Document ka ek chhota tukda.</div>
+    <div class="word"><b>Embedding</b>Text ka matlab numbers mein likhna.</div>
+    <div class="word"><b>Sentence Transformers</b>Woh free model jo embeddings banata hai. Hamara model all-MiniLM-L6-v2 hai.</div>
+    <div class="word"><b>FAISS</b>Numbers ki smart almari, jo milte-julte tukde jaldi dhoondti hai.</div>
+    <div class="word"><b>Prompt</b>AI ko diye gaye instructions.</div>
+    <div class="word"><b>Gradio</b>Python ki library jisse AI app browser mein chalta hai. Humne uska Server mode use kiya aur design apna banaya. <b>/classic</b> par simple Gradio chat bhi hai.</div>
+    <div class="word"><b>Python</b>Woh programming language jisme backend likha hai. Assignment mein yahi maangi gayi hai.</div>
+    <div class="word"><b>Frontend aur backend</b>Jo screen par dikhta hai woh frontend (<code>web</code> folder). Jo peeche kaam karta hai woh backend (<code>rag</code> folder).</div>
+    <div class="word"><b>GitHub aur git clone</b>GitHub code rakhne ki website hai. <code>git clone</code> wahan se code apne laptop par copy karta hai.</div>
+    <h3>Kaunsi file kya karti hai</h3>
+    <table>
+      <tr><th>File</th><th>Kaam</th></tr>
+      <tr><td><code>rag/ingest.py</code></td><td>PDF padhna aur tukde karna</td></tr>
+      <tr><td><code>rag/store.py</code></td><td>Embeddings aur FAISS</td></tr>
+      <tr><td><code>rag/prompt.py</code></td><td>AI ke rules</td></tr>
+      <tr><td><code>rag/llm.py</code></td><td>Ollama se baat karna</td></tr>
+      <tr><td><code>rag/pipeline.py</code></td><td>Sawal se jawab tak ka poora raasta</td></tr>
+      <tr><td><code>rag/server.py</code></td><td>Gradio server</td></tr>
+      <tr><td><code>tests/five_questions.py</code></td><td>5 sawalon ka test</td></tr>
+    </table>
+  </section>
+
+  <section id="demo">
+    <h2>Sir ko demo kaise dikhana hai</h2>
+    <div class="step"><span class="num">1</span><div><b>Papers tab:</b> "Use the sample handbook" dabao. Chaar stages chalte dikhenge. Chunk Explorer mein tukde dikhao.</div></div>
+    <div class="step"><span class="num">2</span><div><b>Chat tab:</b> poocho "What is the fine for returning a book late?" Jawab aur neeche source text dikhao.</div></div>
+    <div class="step"><span class="num">3</span><div><b>Chat tab:</b> poocho "Does the library have a swimming pool?" Document mein yeh nahi hai, to Panna ko mana karna chahiye.</div></div>
+    <div class="step"><span class="num">4</span><div><b>Engine tab:</b> Retrieval Lab ke scores aur "The prompt" dikhao.</div></div>
+    <div class="step"><span class="num">5</span><div><b>Marks tab:</b> "Run all five" dabao, phir "Save report". "Show me" button har mark ka saboot khol deta hai.</div></div>
+    <div class="note"><b>Demo se pehle ek baar poora chalakar dekh lena,</b> taaki kuch atke to time rahe. Studio tab mein Bubblegum look bhi hai.</div>
+  </section>
+
+  <section id="sawal">
+    <h2>Sir ye pooch sakte hain</h2>
+    <details><summary>RAG kya hai?</summary><p>Pehle document se sahi text dhoondte hain, phir wahi text AI ko dete hain. Isse jawab document se aata hai, AI ki yaad se nahi.</p></details>
+    <details><summary>Chunking aur overlap kyun?</summary><p>Poora document AI ko ek saath nahi de sakte, aur chhote tukdon par search behtar hoti hai. Overlap isliye ki koi baat do tukdon ke beech se kat na jaye.</p></details>
+    <details><summary>Embedding kya hai?</summary><p>Text ko numbers mein badalna. Yahan har tukda 384 numbers ka hai. Same matlab wale text ke numbers paas hote hain.</p></details>
+    <details><summary>FAISS kya karta hai?</summary><p>Numbers store karta hai aur sawal ke sabse paas wale tukde dhoondta hai. Hum IndexFlatIP use kar rahe hain, jo cosine similarity se exact search karta hai.</p></details>
+    <details><summary>Bot jhooth kyun nahi bolta?</summary><p>Do guard hain. Score kam ho to AI ko bulate hi nahi. Aur prompt kehta hai ki sirf diye gaye text se jawab do, warna mana kar do. Chhota model kabhi galti kar sakta hai, isliye source text bhi dikhate hain taaki check ho sake.</p></details>
+    <details><summary>Paid API ke bina kaise chala?</summary><p>Ollama model ko laptop par hi chalata hai, aur embeddings bhi local hain. Internet sirf pehli baar download ke liye chahiye.</p></details>
+    <details><summary>UI to alag hai, Gradio kahan hai?</summary><p>Yeh Gradio ka Server mode hai. <code>rag/server.py</code> dikhao. Stock Gradio chat <code>/classic</code> par khulta hai.</p></details>
+    <details><summary>Yeh project kisne banaya?</summary><p>Jo sach hai wahi bolna. Agar kisi ki ya AI tool ki madad li hai to bata do. Isliye upar wali kahani achhe se samajh lo, taaki tum khud explain kar sako.</p></details>
+  </section>
+
+  <section id="dikkat">
+    <h2>Agar kuch atak jaye</h2>
+    <table>
+      <tr><th>Kya dikha</th><th>Kya karein</th></tr>
+      <tr><td><code>ollama</code> ya <code>python</code> not recognized</td><td>Terminal band karke naya kholo. Phir bhi na chale to dobara install karo (Python mein PATH wala tick).</td></tr>
+      <tr><td><code>activate</code> par "running scripts is disabled"</td><td>Yeh chalao, phir activate dobara: <code>Set-ExecutionPolicy -Scope Process Bypass</code></td></tr>
+      <tr><td>App mein "Ollama is not running"</td><td>Start menu se Ollama app kholo.</td></tr>
+      <tr><td>"Model is not downloaded"</td><td><code>ollama pull llama3.2</code> chalao.</td></tr>
+      <tr><td>Jawab bahut slow</td><td><code>ollama pull llama3.2:1b</code> chalao, phir Keys tab mein yeh naam likhkar Use dabao.</td></tr>
+      <tr><td>Scanned PDF par "No readable text"</td><td>Photo wali PDF nahi chalegi. Text wali PDF ya TXT use karo.</td></tr>
+    </table>
+  </section>
+</main>
+<script>
+  document.addEventListener('click', async event => {
+    const button = event.target.closest('.cmd button');
+    if (!button) return;
+    const text = button.previousElementSibling.textContent;
+    try { await navigator.clipboard.writeText(text); }
+    catch {
+      const box = Object.assign(document.createElement('textarea'), { value: text });
+      document.body.append(box); box.select(); document.execCommand('copy'); box.remove();
+    }
+    button.textContent = 'Copied!';
+    setTimeout(() => { button.textContent = 'Copy'; }, 1400);
+  });
+</script>
+</body>
+</html>
