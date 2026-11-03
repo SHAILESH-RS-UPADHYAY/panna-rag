@@ -1,0 +1,6 @@
+.venv/
+__pycache__/
+data/
+.playwright-mcp/
+.claude/
+MAJOR PRACTICAL ASSIGNMENT*.pdf

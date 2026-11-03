@@ -1,0 +1,96 @@
+/* Each look is only tokens. They sit on the attribute, not on :root, so a preview thumbnail can
+   wear a different look from the page around it. */
+[data-look="register"] {
+  --cover: #2f6bff; --cover-2: #1f4fd8; --corner: #ffc933; --spine: #1f4fd8;
+  --paper: #fffbef; --paper-deep: #fff1d0; --edge: #fff6e2; --edge-d: #d8c08f; --edge-l: #ffffff; --under: #ffffff;
+  --burn: 214, 160, 80; --rule: rgba(63, 123, 255, .3); --col-rule: rgba(239, 68, 68, .6);
+  --head-ink: #1f3a8a; --ink-soft: #5b6b94; --accent: #2f6bff; --on-accent: #ffffff; --stamp: #e5383b;
+  --tab-1: #ffd84d; --tab-2: #ff9fc4; --tab-3: #7fe0c3; --tab-4: #9cc4ff; --tab-ink: #1c2a5e;
+  --slip: #ffffff; --slip-ink: #24305e; --radius: 2px; --ui-radius: 6px; --thread: #ffffff; --plate: #fff6d6; --plate-ink: #1f3a8a;
+}
+[data-look="bubblegum"] {
+  --cover: #ff5fa8; --cover-2: #e6398a; --corner: #ffd1e8; --spine: #e6398a;
+  --paper: #fff5fa; --paper-deep: #ffe2f0; --edge: #ffd9ec; --edge-d: #ff9fcd; --edge-l: #fff; --under: #fff;
+  --burn: 255, 120, 180; --rule: rgba(255, 110, 175, .3); --col-rule: rgba(255, 80, 160, .42);
+  --head-ink: #d6247f; --ink-soft: #a14f83; --accent: #ff3d96; --on-accent: #fff; --stamp: #ff2f8e;
+  --tab-1: #ffb3d9; --tab-2: #ffe27a; --tab-3: #a6f0ff; --tab-4: #c8b6ff; --tab-ink: #7a1f5c;
+  --slip: #fff; --slip-ink: #6d1f56; --radius: 24px; --ui-radius: 999px; --thread: #fff; --plate: #fff; --plate-ink: #d6247f;
+}
+[data-look="rose"] {
+  --cover: #c98f83; --cover-2: #a96e62; --corner: #ecd0c5; --spine: #a96e62;
+  --paper: #fffaf6; --paper-deep: #f8e9e2; --edge: #f5e3da; --edge-d: #cfae9e; --edge-l: #fff6f0; --under: #fffdfb;
+  --burn: 210, 150, 130; --rule: rgba(190, 130, 110, .3); --col-rule: rgba(190, 120, 100, .45);
+  --head-ink: #a0594c; --ink-soft: #94726a; --accent: #b4685a; --on-accent: #fff8f4; --stamp: #b4685a;
+  --tab-1: #f1d3c8; --tab-2: #f7e5d9; --tab-3: #e5bfb3; --tab-4: #fbeee6; --tab-ink: #6e4238;
+  --slip: #fff; --slip-ink: #6e4238; --radius: 12px; --ui-radius: 10px; --thread: #e8c3b6; --plate: #fff4ee; --plate-ink: #a0594c;
+}
+[data-look="cottage"] {
+  --cover: #5d6b4c; --cover-2: #414d34; --corner: #38432d; --spine: #38432d;
+  --paper: #f9f2e0; --paper-deep: #eee3c8; --edge: #efe5cb; --edge-d: #bfb18a; --edge-l: #fbf6e8; --under: #fdf9ee;
+  --burn: 130, 110, 60; --rule: rgba(95, 115, 80, .28); --col-rule: rgba(160, 90, 90, .38);
+  --head-ink: #3f5236; --ink-soft: #6d7158; --accent: #a4564f; --on-accent: #fff8ee; --stamp: #a4564f;
+  --tab-1: #dfe3c4; --tab-2: #f0d9c8; --tab-3: #e7d3da; --tab-4: #d2dfc9; --tab-ink: #38432d;
+  --slip: #fffaf0; --slip-ink: #38432d; --radius: 6px; --ui-radius: 8px; --thread: #d9cfae; --plate: #f4ecd6; --plate-ink: #3f5236;
+}
+[data-look="y2k"] {
+  --cover: #a57bff; --cover-2: #6e43e6; --corner: #e9dcff; --spine: #6e43e6;
+  --paper: #f6f1ff; --paper-deep: #e9dfff; --edge: #e3d8ff; --edge-d: #a993ff; --edge-l: #fff; --under: #fff;
+  --burn: 130, 90, 255; --rule: rgba(120, 90, 255, .22); --col-rule: rgba(226, 43, 208, .35);
+  --head-ink: #5b2be0; --ink-soft: #7262b2; --accent: #e22bd0; --on-accent: #fff; --stamp: #e22bd0;
+  --tab-1: #ffb3f0; --tab-2: #b3f4ff; --tab-3: #d4c2ff; --tab-4: #fff2a8; --tab-ink: #3c1a9e;
+  --slip: #fff; --slip-ink: #3c1a9e; --radius: 18px; --ui-radius: 14px; --thread: #fff; --plate: #ffffffd9; --plate-ink: #5b2be0;
+}
+[data-look="mochi"] {
+  --cover: #ffc9a8; --cover-2: #ffb08a; --corner: #fff0e0; --spine: #ffb08a;
+  --paper: #fffdf8; --paper-deep: #fff3e4; --edge: #ffedd9; --edge-d: #efc59c; --edge-l: #fff; --under: #fff;
+  --burn: 240, 180, 130; --rule: rgba(120, 185, 165, .34); --col-rule: rgba(255, 143, 107, .4);
+  --head-ink: #7b5a48; --ink-soft: #927a6b; --accent: #f47a55; --on-accent: #fff; --stamp: #f47a55;
+  --tab-1: #ffd6c2; --tab-2: #c9f0e0; --tab-3: #fff0b3; --tab-4: #d9d6ff; --tab-ink: #5a4238;
+  --slip: #fff; --slip-ink: #5a4238; --radius: 20px; --ui-radius: 16px; --thread: #fff; --plate: #fff; --plate-ink: #7b5a48;
+}
+[data-look="moonlit"] {
+  --cover: #1a1f45; --cover-2: #0e1230; --corner: #c9a45c; --spine: #0e1230;
+  --paper: #171c36; --paper-deep: #10142a; --edge: #2a3058; --edge-d: #0d1026; --edge-l: #3d4478; --under: #2c3260;
+  --burn: 0, 0, 12; --rule: rgba(229, 192, 123, .17); --col-rule: rgba(229, 192, 123, .36);
+  --head-ink: #e5c07b; --ink-soft: #a9acca; --accent: #e5c07b; --on-accent: #171c36; --stamp: #e8c681;
+  --tab-1: #2b3160; --tab-2: #39407a; --tab-3: #232950; --tab-4: #4a4f8a; --tab-ink: #f2dfb0;
+  --slip: #20264a; --slip-ink: #e8e6f5; --radius: 8px; --ui-radius: 8px; --thread: #c9a45c; --plate: #10142a; --plate-ink: #e5c07b;
+}
+[data-look="casefile"] {
+  --cover: #b38a4d; --cover-2: #8c6a37; --corner: #5f4522; --spine: #5f4522;
+  --paper: #ebe0c8; --paper-deep: #d8c9a6; --edge: #e2d6bb; --edge-d: #9c8c68; --edge-l: #f1e8d4; --under: #f3ecdb;
+  --burn: 120, 90, 40; --rule: rgba(70, 60, 40, .14); --col-rule: rgba(179, 38, 30, .5);
+  --head-ink: #2a2620; --ink-soft: #5c5343; --accent: #b3261e; --on-accent: #fff6e6; --stamp: #b3261e;
+  --tab-1: #f4d65c; --tab-2: #efdf8a; --tab-3: #e8cf6b; --tab-4: #f2e3a0; --tab-ink: #2a2620;
+  --slip: #f4ecd8; --slip-ink: #2a2620; --radius: 3px; --ui-radius: 3px; --thread: #5f4522; --plate: #f4d65c; --plate-ink: #2a2620;
+}
+[data-look="quiet"] {
+  --cover: #3f3a36; --cover-2: #2c2825; --corner: #24211e; --spine: #24211e;
+  --paper: #fbf8f2; --paper-deep: #f2ece0; --edge: #efe9dd; --edge-d: #c6bdac; --edge-l: #fbf8f2; --under: #fff;
+  --burn: 120, 105, 80; --rule: rgba(70, 85, 120, .17); --col-rule: rgba(190, 50, 40, .42);
+  --head-ink: #2b2824; --ink-soft: #6a655c; --accent: #b53b2a; --on-accent: #fff; --stamp: #b53b2a;
+  --tab-1: #ece6da; --tab-2: #e4ddcf; --tab-3: #f1ebe0; --tab-4: #dfd8ca; --tab-ink: #2b2824;
+  --slip: #fff; --slip-ink: #2b2824; --radius: 4px; --ui-radius: 5px; --thread: #d9d1c2; --plate: #fbf8f2; --plate-ink: #2b2824;
+}
+
+/* ── Desks ── */
+[data-desk="sky"] { --desk-base: #7cc4ff; --desk-bg: radial-gradient(900px 600px at 15% 10%, #ffffff99, transparent 70%), radial-gradient(900px 700px at 90% 90%, #ffd6ec, transparent 70%), linear-gradient(135deg, #8fd3ff, #b9c8ff); --pool: rgba(255, 255, 255, .3); }
+[data-desk="walnut"] { --desk-base: #24150c; --desk-bg: url(../img/wood.webp), linear-gradient(90deg, #3a2312, #2c1a0d 40%, #38210f 70%, #281709); --pool: rgba(255, 196, 120, .24); }
+[data-desk="teak"] { --desk-base: #8a5a2e; --desk-bg: url(../img/wood.webp), linear-gradient(90deg, #a06a35, #8d5b2a 50%, #9c6631); --pool: rgba(255, 226, 170, .26); }
+[data-desk="cork"] { --desk-base: #b98a56; --desk-bg: radial-gradient(circle at 2px 2px, rgba(80, 45, 15, .4) 1px, transparent 1.6px) 0 0 / 9px 11px, radial-gradient(circle at 5px 7px, rgba(255, 225, 175, .4) 1px, transparent 1.6px) 0 0 / 13px 9px, #bd8f5b; --pool: rgba(255, 235, 190, .22); }
+[data-desk="linen"] { --desk-base: #aab59a; --desk-bg: repeating-linear-gradient(0deg, rgba(255, 255, 255, .1) 0 1px, transparent 1px 3px), repeating-linear-gradient(90deg, rgba(50, 65, 40, .09) 0 1px, transparent 1px 3px), #a9b598; --pool: rgba(255, 250, 225, .3); }
+[data-desk="gingham"] { --desk-base: #ffd3e6; --desk-bg: linear-gradient(90deg, rgba(255, 92, 165, .3) 50%, transparent 50%) 0 0 / 56px 56px, linear-gradient(0deg, rgba(255, 92, 165, .3) 50%, transparent 50%) 0 0 / 56px 56px, #fff0f7; --pool: rgba(255, 255, 255, .34); }
+[data-desk="marble"] { --desk-base: #f3e2dc; --desk-bg: url(../img/marble.webp) center / cover, #f6e8e3; --pool: rgba(255, 255, 255, .4); }
+[data-desk="mint"] { --desk-base: #c8ecdf; --desk-bg: linear-gradient(rgba(70, 150, 125, .22) 1px, transparent 1px) 0 0 / 28px 28px, linear-gradient(90deg, rgba(70, 150, 125, .22) 1px, transparent 1px) 0 0 / 28px 28px, #cbeee1; --pool: rgba(255, 255, 255, .34); }
+[data-desk="holo"] { --desk-base: #cdbcff; --desk-bg: conic-gradient(from var(--holo, 0deg) at 50% 50%, #ffc4f2, #c5d8ff, #bdfff2, #fff4bd, #ffc4f2); --pool: rgba(255, 255, 255, .28); }
+[data-desk="night"] { --desk-base: #090c1f; --desk-bg: radial-gradient(1200px 700px at 72% 8%, #243061 0, transparent 70%), radial-gradient(900px 600px at 10% 90%, #1c1f4d 0, transparent 70%), #090c1f; --pool: rgba(255, 228, 160, .08); }
+[data-desk="slate"] { --desk-base: #3c4148; --desk-bg: url(../img/wood.webp), linear-gradient(135deg, #4a5058, #33373d); --pool: rgba(255, 240, 210, .13); }
+
+@property --holo { syntax: "<angle>"; inherits: true; initial-value: 0deg; }
+[data-desk="holo"] .desk { animation: holo 26s linear infinite; }
+@keyframes holo { to { --holo: 360deg; } }
+
+/* ── Paper patterns, painted on whatever scrolls ── */
+[data-paper="ledger"] .lined, [data-paper="ruled"] .lined { background-image: repeating-linear-gradient(transparent 0 calc(var(--line) - 1px), var(--rule) calc(var(--line) - 1px) var(--line)); }
+[data-paper="squared"] .lined { background-image: linear-gradient(var(--rule) 1px, transparent 1px), linear-gradient(90deg, var(--rule) 1px, transparent 1px); background-size: 100% calc(var(--line) * .75), calc(var(--line) * .75) 100%; }
+[data-paper="dotted"] .lined { background-image: radial-gradient(circle, color-mix(in srgb, var(--rule) 100%, #000 18%) 1.15px, transparent 1.3px); background-size: var(--line) var(--line); }

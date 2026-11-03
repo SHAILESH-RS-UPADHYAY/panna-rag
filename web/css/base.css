@@ -1,0 +1,73 @@
+/* Reset, shared controls and the small printed details. */
+*, *::before, *::after { box-sizing: border-box; }
+html { height: 100%; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body { height: 100%; margin: 0; overflow: hidden; background: var(--desk-base); color: var(--ink-a); font-family: var(--font-a); font-size: var(--text); }
+html:not([data-ready]) .desk { visibility: hidden; }
+button, input, textarea, select { font: inherit; color: inherit; }
+button { cursor: pointer; }
+h1, h2, h3, h4, p, ul, ol, figure, blockquote { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+[hidden] { display: none !important; }
+:focus-visible { outline: 2.5px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
+::selection { background: var(--marker); color: #1e1408; }
+
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.i { width: 1.2em; height: 1.2em; flex: none; display: block; }
+
+:root {
+  --text: 17px;
+  --line: round(calc(var(--text) * 1.72), 1px);
+  --font-print: var(--font-head);
+  --font-ui: var(--font-a);
+  --tab-out: 66px;
+  --tab-h: 46px;
+  --stack: 46px;
+  --stack-y: 15px;
+  --board: 9px;
+  --col-date: 74px;
+  --col-folio: 52px;
+  --age: .88;
+}
+[data-density="compact"] { --line: round(calc(var(--text) * 1.5), 1px); }
+
+/* Printed, like the form lines of an old register */
+.print { font-family: var(--font-print); color: var(--head-ink); letter-spacing: .03em; font-size: calc(19px * var(--scale-head, 1)); line-height: 1.2; }
+.print.small { font-size: calc(13.5px * var(--scale-head, 1)); letter-spacing: .08em; color: var(--ink-soft); }
+.page-title { font-family: var(--font-head); font-size: calc(32px * var(--scale-head, 1)); line-height: 1.1; color: var(--head-ink); font-weight: 400; text-wrap: balance; }
+.page-sub { font-family: var(--font-ui); font-size: 15.5px; line-height: 1.45; color: var(--ink-soft); text-wrap: pretty; margin-top: 4px; }
+.hand-note { font-family: var(--font-q); color: var(--ink-q); font-size: calc(19px * var(--scale-q, 1)); line-height: 1.35; }
+
+/* Buttons feel like little paper tags that press into the page */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: .45em; min-height: 38px; padding: .2em .9em; border: 1.5px solid color-mix(in srgb, var(--head-ink) 55%, transparent); border-radius: var(--ui-radius); background: color-mix(in srgb, var(--paper) 72%, #fff 28%); color: var(--head-ink); font-family: var(--font-ui); font-size: 15px; line-height: 1.15; box-shadow: 1.5px 2px 0 color-mix(in srgb, var(--head-ink) 40%, transparent); transition: transform .13s ease-out, box-shadow .13s ease-out, background-color .15s; white-space: nowrap; }
+.btn:hover { transform: translate(-1px, -1px) rotate(-.7deg); box-shadow: 3px 4px 0 color-mix(in srgb, var(--head-ink) 40%, transparent); }
+.btn:active { transform: translate(1px, 1px); box-shadow: 0 0 0 transparent; }
+.btn.primary { background: var(--accent); color: var(--on-accent); border-color: transparent; }
+.btn.small { min-height: 32px; font-size: 13.5px; padding: .1em .7em; }
+.btn[disabled] { opacity: .5; pointer-events: none; }
+.btn.ghost { background: transparent; box-shadow: none; border-style: dashed; }
+
+.seg { display: inline-flex; gap: 2px; padding: 3px; border: 1.5px dashed color-mix(in srgb, var(--head-ink) 42%, transparent); border-radius: var(--ui-radius); }
+.seg button { border: 0; background: none; padding: .24em .78em; min-height: 30px; border-radius: max(2px, calc(var(--ui-radius) - 3px)); font-family: var(--font-ui); font-size: 14px; color: var(--ink-soft); transition: background-color .18s, color .18s, transform .12s; white-space: nowrap; }
+.seg button:hover { color: var(--head-ink); }
+.seg button:active { transform: scale(.96); }
+.seg button[aria-pressed="true"] { background: var(--marker); color: #2a1e10; }
+
+.field { width: 100%; min-height: 40px; padding: .35em .6em; background: color-mix(in srgb, var(--paper) 70%, #fff 30%); border: 1.5px solid color-mix(in srgb, var(--head-ink) 38%, transparent); border-radius: var(--ui-radius); font-family: var(--font-ui); font-size: 15px; color: var(--ink-a); }
+.field:focus { outline: 2.5px solid var(--accent); outline-offset: 1px; }
+.field::placeholder { color: var(--ink-soft); opacity: .8; }
+
+input[type="range"] { width: 100%; accent-color: var(--accent); height: 24px; background: transparent; cursor: grab; }
+
+.scroll { overflow-y: auto; overflow-x: hidden; min-height: 0; scrollbar-width: thin; scrollbar-color: color-mix(in srgb, var(--head-ink) 34%, transparent) transparent; }
+.lined { background-attachment: local; }
+
+.toasts { position: fixed; left: 50%; bottom: 26px; transform: translateX(-50%); display: grid; gap: 8px; z-index: 80; pointer-events: none; }
+.toast { padding: .55em 1em; background: var(--slip); color: var(--slip-ink); border: 1.5px solid var(--head-ink); border-radius: var(--ui-radius); font-family: var(--font-ui); font-size: 15px; box-shadow: 3px 4px 0 rgba(0, 0, 0, .25); animation: toast-in .32s cubic-bezier(.3, 1.4, .5, 1) both; }
+.toast.out { opacity: 0; transform: translateY(6px); transition: opacity .4s, transform .4s; }
+.toast.bad { border-color: var(--stamp); color: var(--stamp); }
+@keyframes toast-in { from { opacity: 0; transform: translateY(12px) rotate(-1.2deg); } }
+
+[data-calm] *, [data-calm] *::before, [data-calm] *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}

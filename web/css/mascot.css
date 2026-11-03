@@ -1,0 +1,101 @@
+/* The robot: everything that makes it feel alive. All motion is transform and opacity, so it stays smooth. */
+.mascot-host { display: inline-grid; place-items: center; cursor: pointer; --look-x: 0px; --look-y: 0px; --tilt: 0deg; }
+.mascot { width: 100%; height: 100%; overflow: visible; display: block; }
+.mascot * { transform-box: view-box; }
+
+.r-float { animation: r-float 3.4s ease-in-out infinite; }
+.r-shadow { fill: rgba(28, 50, 120, .18); transform-origin: 60px 123px; animation: r-shadow 3.4s ease-in-out infinite; }
+.r-jet { opacity: .3; transform-origin: 60px 113px; animation: r-jet 1.1s ease-in-out infinite; }
+.r-head-track { transform: rotate(var(--tilt)); transform-origin: 60px 70px; transition: transform .25s ease-out; }
+.r-head { animation: r-nod 4.4s ease-in-out infinite; }
+.r-eyes { transform: translate(var(--look-x), var(--look-y)); transition: transform .16s ease-out; }
+.r-eye { animation: r-blink 5.2s infinite; }
+.r-antenna { animation: r-sway 2.8s ease-in-out infinite; }
+.r-ball { transform-origin: 60px 6px; animation: r-pulse 1.8s ease-in-out infinite; }
+.r-ball-glow { transform-origin: 60px 6px; animation: r-glow 1.8s ease-in-out infinite; }
+.r-spark { opacity: 0; transform-box: fill-box; transform-origin: center; animation: r-twinkle 3s ease-in-out infinite; animation-delay: var(--d); }
+.r-chest { animation: r-beat 1.6s ease-in-out infinite; }
+.r-turn { animation: r-page 4.2s cubic-bezier(.45, 0, .55, 1) infinite; }
+.r-book { animation: r-book 3.4s ease-in-out infinite; }
+.r-cheek { opacity: .72; }
+.r-happy, .r-sad, .r-dots, .r-o, .r-frown, .r-hearts { opacity: 0; }
+.r-h { transform-box: fill-box; transform-origin: center; }
+.r-bow { transform-box: fill-box; transform-origin: 50% 100%; animation: r-sway 2.2s ease-in-out infinite; }
+
+/* Hello: hover and it waves */
+.mascot-host:hover .r-arm { animation: r-wave .7s ease-in-out 2; }
+
+/* Listening: leans in, eyes wide, mouth a little open */
+[data-mood="listen"] .r-head { animation: none; transform: rotate(6deg) translateY(1px); }
+[data-mood="listen"] .r-eye { animation: none; transform: scale(1.14); }
+[data-mood="listen"] .r-smile { opacity: 0; }
+[data-mood="listen"] .r-o { opacity: 1; }
+[data-mood="listen"] .r-ball, [data-mood="listen"] .r-ball-glow { animation-duration: .8s; }
+
+/* Thinking: loading dots for eyes, pages flying */
+[data-mood="think"] .r-open, [data-mood="think"] .r-smile { opacity: 0; }
+[data-mood="think"] .r-dots { opacity: 1; }
+[data-mood="think"] .r-dots circle { animation: r-dot .84s ease-in-out infinite; }
+[data-mood="think"] .r-dots circle:nth-child(2) { animation-delay: .14s; }
+[data-mood="think"] .r-dots circle:nth-child(3) { animation-delay: .28s; }
+[data-mood="think"] .r-o { opacity: 1; }
+[data-mood="think"] .r-turn { animation-duration: .75s; }
+[data-mood="think"] .r-ball, [data-mood="think"] .r-ball-glow { animation-duration: .5s; }
+[data-mood="think"] .r-head { animation: r-scan 1.5s ease-in-out infinite; }
+[data-mood="think"] .r-spark { animation-duration: 1.1s; }
+
+/* Writing: eyes down on the book, nodding along */
+[data-mood="write"] .r-eyes { transform: translate(0, 3px); }
+[data-mood="write"] .r-head { animation: r-write .6s ease-in-out infinite; }
+[data-mood="write"] .r-arm { animation: r-scribble .3s ease-in-out infinite; }
+[data-mood="write"] .r-book { animation: none; }
+
+/* Happy: a hop, happy eyes, hearts */
+[data-mood="happy"] .r-float { animation: r-hop .85s cubic-bezier(.3, 1.5, .5, 1) 2; }
+[data-mood="happy"] .r-open { opacity: 0; }
+[data-mood="happy"] .r-happy, [data-mood="happy"] .r-hearts { opacity: 1; }
+[data-mood="happy"] .r-h { animation: r-heart 1.1s ease-out both; animation-delay: var(--d); }
+[data-mood="happy"] .r-arm { animation: r-wave .4s ease-in-out 3; }
+[data-mood="happy"] .r-cheek { opacity: 1; }
+
+/* Sad: it could not find it */
+[data-mood="sad"] .r-open, [data-mood="sad"] .r-smile { opacity: 0; }
+[data-mood="sad"] .r-sad, [data-mood="sad"] .r-frown { opacity: 1; }
+[data-mood="sad"] .r-head { animation: none; transform: rotate(-4deg) translateY(3px); }
+[data-mood="sad"] .r-antenna { animation: none; transform: rotate(28deg); }
+[data-mood="sad"] .r-spark, [data-mood="sad"] .r-jet { animation: none; opacity: 0; }
+
+@keyframes r-float { 0%, 100% { transform: translateY(-1.5px); } 50% { transform: translateY(2.5px); } }
+@keyframes r-shadow { 0%, 100% { transform: scaleX(.86); opacity: .72; } 50% { transform: scaleX(1.04); opacity: 1; } }
+@keyframes r-jet { 0%, 100% { transform: scale(.82, .7); opacity: .2; } 50% { transform: scale(1.1, 1.1); opacity: .42; } }
+@keyframes r-nod { 0%, 100% { transform: rotate(-1.6deg); } 50% { transform: rotate(1.6deg); } }
+@keyframes r-blink { 0%, 56%, 60%, 91%, 95%, 100% { transform: scaleY(1); } 58%, 93% { transform: scaleY(.06); } }
+@keyframes r-sway { 0%, 100% { transform: rotate(-5deg); } 50% { transform: rotate(5deg); } }
+@keyframes r-pulse { 0%, 100% { transform: scale(.92); } 50% { transform: scale(1.1); } }
+@keyframes r-glow { 0%, 100% { transform: scale(.75); opacity: .14; } 50% { transform: scale(1.2); opacity: .36; } }
+@keyframes r-twinkle { 0%, 100% { opacity: 0; transform: scale(.3) rotate(0); } 50% { opacity: .95; transform: scale(1) rotate(45deg); } }
+@keyframes r-beat { 0%, 60%, 100% { transform: scale(1); } 15% { transform: scale(1.28); } 30% { transform: scale(.96); } 45% { transform: scale(1.14); } }
+@keyframes r-page { 0%, 58% { transform: scaleX(1); } 82%, 100% { transform: scaleX(-1); } }
+@keyframes r-book { 0%, 100% { transform: rotate(-1deg); } 50% { transform: rotate(1deg) translateY(1px); } }
+@keyframes r-wave { 0%, 100% { transform: rotate(0); } 50% { transform: rotate(-52deg); } }
+@keyframes r-dot { 0%, 100% { transform: translateY(2.2px); opacity: .5; } 45% { transform: translateY(-3.6px); opacity: 1; } }
+@keyframes r-scan { 0%, 100% { transform: rotate(-5deg); } 50% { transform: rotate(5deg); } }
+@keyframes r-write { 0%, 100% { transform: rotate(-1deg) translateY(1px); } 50% { transform: rotate(1deg) translateY(2.4px); } }
+@keyframes r-scribble { 0%, 100% { transform: rotate(-5deg); } 50% { transform: rotate(6deg); } }
+@keyframes r-hop { 0%, 100% { transform: translateY(0); } 40% { transform: translateY(-13px); } 72% { transform: translateY(1px); } }
+@keyframes r-heart { 0% { opacity: 0; transform: translate(0, 10px) scale(.2); } 25% { opacity: 1; } 100% { opacity: 0; transform: translate(var(--x), -24px) scale(1.15); } }
+
+/* Waking up, the first time a tab opens */
+.wake { position: fixed; inset: 0; z-index: 90; display: grid; place-content: center; justify-items: center; gap: 4px; background: var(--desk-bg); cursor: pointer; transition: opacity .42s ease; }
+.wake .bot { width: 210px; height: 224px; }
+.wake .r-eyes, .wake .r-mouth, .wake .r-cheek, .wake .r-ball, .wake .r-ball-glow, .wake .r-chest { opacity: 0; }
+.wake.on .r-eyes { opacity: 1; animation: r-boot .5s steps(5) both; }
+.wake.on .r-smile, .wake.on .r-ball, .wake.on .r-chest { opacity: 1; }
+.wake.on .r-ball-glow { opacity: .26; }
+.wake.on .r-cheek { opacity: .72; }
+.wake.on .r-arm { animation: r-wave .5s ease-in-out .35s 2; }
+.wake .word { font-family: var(--font-head); font-size: calc(46px * var(--scale-head, 1)); color: #fff; line-height: 1.1; opacity: 0; transform: translateY(8px); transition: opacity .4s .25s, transform .4s .25s; }
+.wake .sub { font-family: var(--font-a); font-size: 18px; color: #fff; opacity: 0; transition: opacity .4s .4s; }
+.wake.on .word, .wake.on .sub { opacity: 1; transform: none; }
+.wake.bye { opacity: 0; pointer-events: none; }
+@keyframes r-boot { 0% { opacity: 0; } 25% { opacity: 1; } 45% { opacity: .2; } 70% { opacity: 1; } 85% { opacity: .5; } 100% { opacity: 1; } }

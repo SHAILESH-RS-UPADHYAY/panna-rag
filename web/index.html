@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en" data-look="register">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Panna</title>
+  <meta name="description" content="A little lamp that reads your old register: a local RAG chatbot that answers only from your document.">
+  <link rel="icon" href="/web/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/web/fonts/fonts.css">
+  <link rel="stylesheet" href="/web/css/base.css">
+  <link rel="stylesheet" href="/web/css/looks.css">
+  <link rel="stylesheet" href="/web/css/book.css">
+  <link rel="stylesheet" href="/web/css/mascot.css">
+  <link rel="stylesheet" href="/web/css/chat.css">
+  <link rel="stylesheet" href="/web/css/sections.css">
+</head>
+<body>
+  <div class="desk" id="desk">
+    <div class="lamp-pool" aria-hidden="true"></div>
+    <main class="book closed" id="book">
+      <div class="board board-l left-part" aria-hidden="true"></div>
+      <div class="board board-r" aria-hidden="true"></div>
+      <div class="loose loose-a left-part" aria-hidden="true"></div>
+      <div class="loose loose-b" aria-hidden="true"></div>
+      <div class="stack stack-x stack-l left-part" id="stack-l" aria-hidden="true"></div>
+      <div class="stack stack-x stack-r" id="stack-r" aria-hidden="true"></div>
+      <div class="stack stack-y stack-bl left-part" id="stack-bl" aria-hidden="true"></div>
+      <div class="stack stack-y stack-br" id="stack-br" aria-hidden="true"></div>
+
+      <section class="page page-l left-part" id="page-l">
+        <div class="under"></div>
+        <div class="sheet sheet-l" id="sheet-l"><div class="body" id="body-l"></div></div>
+      </section>
+      <section class="page page-r" id="page-r">
+        <div class="under"></div>
+        <div class="sheet sheet-r" id="sheet-r"><div class="body" id="body-r"></div></div>
+        <div class="repair" id="repair" aria-hidden="true"></div>
+        <div class="cover-art" id="cover-art" aria-hidden="true">
+          <div class="plate"><span class="plate-kicker">Register</span><strong id="cover-name">Panna</strong><span class="plate-vol">Vol. III · Est. 1931</span></div>
+        </div>
+      </section>
+
+      <div class="gutter left-part" aria-hidden="true">
+        <svg class="stitches" viewBox="0 0 12 600" preserveAspectRatio="none"><path d="M6 40v60M6 150v60M6 270v60M6 390v60M6 500v60"/></svg>
+      </div>
+      <div class="ribbon left-part" aria-hidden="true"></div>
+      <nav class="tabs" id="tabs" aria-label="Sections"></nav>
+      <div class="flip-stage" id="flip-stage" aria-hidden="true">
+        <div class="cast cast-r"></div>
+        <div class="cast cast-l"></div>
+      </div>
+    </main>
+  </div>
+  <canvas id="floaties" aria-hidden="true"></canvas>
+  <div class="spot-layer" id="spot"></div>
+  <div class="toasts" id="toasts" role="status" aria-live="polite"></div>
+  <noscript>Panna needs JavaScript to turn its pages.</noscript>
+  <script type="module" src="/web/js/main.js"></script>
+</body>
+</html>

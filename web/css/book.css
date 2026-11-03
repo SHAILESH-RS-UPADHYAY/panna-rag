@@ -1,0 +1,153 @@
+/* The desk and the book: boards, stacked page edges, torn sheets, gutter, tabs and the turning leaf. */
+.desk { position: fixed; inset: 0; display: grid; place-items: center; background: var(--desk-bg); overflow: hidden; }
+.lamp-pool { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(70% 86% at 50% 42%, var(--pool), transparent 72%), radial-gradient(120% 120% at 50% 50%, transparent 70%, rgba(20, 40, 110, .12)); }
+#floaties { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 40; }
+
+.book {
+  --book-w: min(calc(100vw - 2 * (var(--tab-out) + var(--stack) + var(--board) + 6px)), 1640px);
+  --book-h: calc(100dvh - 2 * 8px - var(--stack-y) - var(--board) - 14px);
+  --depth-l: .4; --depth-r: .85;
+  position: relative; width: var(--book-w); height: var(--book-h); transform: translateY(-7px);
+}
+[data-size="snug"] .book { --book-w: min(calc(100vw - 2 * (var(--tab-out) + var(--stack) + var(--board) + 60px)), 1320px); --book-h: calc(100dvh - 96px); }
+
+/* Cover boards, seen around the pages */
+.board { position: absolute; top: -8px; bottom: calc(-1 * var(--stack-y) - var(--board)); background: url(../img/grain.png), linear-gradient(135deg, var(--cover), var(--cover-2)); box-shadow: 0 22px 46px -6px rgba(8, 3, 0, .62), 0 4px 10px rgba(8, 3, 0, .42), inset 0 0 0 1px rgba(255, 225, 180, .14), inset 0 0 26px rgba(0, 0, 0, .32); }
+.board-l { left: calc(-1 * (var(--stack) + var(--board))); right: 50%; border-radius: 8px 0 0 10px; }
+.board-r { right: calc(-1 * (var(--stack) + var(--board))); left: 50%; border-radius: 0 8px 10px 0; }
+.board::before, .board::after { content: ""; position: absolute; width: 74px; height: 74px; background: url(../img/grain.png), var(--corner); }
+.board-r::before { right: 0; top: 0; clip-path: polygon(100% 0, 100% 100%, 0 0); border-top-right-radius: 8px; }
+.board-r::after { right: 0; bottom: 0; clip-path: polygon(100% 100%, 100% 0, 0 100%); border-bottom-right-radius: 10px; }
+.board-l::before { left: 0; top: 0; clip-path: polygon(0 0, 0 100%, 100% 0); border-top-left-radius: 8px; }
+.board-l::after { left: 0; bottom: 0; clip-path: polygon(0 100%, 0 0, 100% 100%); border-bottom-left-radius: 10px; }
+
+/* Stacks: every line here is one sheet of paper, seen from the side */
+.stack { position: absolute; pointer-events: none; }
+.stack-x { top: 3px; bottom: 0; width: var(--stack); transition: transform .9s cubic-bezier(.4, 0, .2, 1); }
+.stack-r { left: 100%; transform-origin: 0 50%; transform: scaleX(var(--depth-r)); }
+.stack-l { right: 100%; transform-origin: 100% 50%; transform: scaleX(var(--depth-l)); }
+.stack-x i { position: absolute; width: 2.1px; background: var(--edge); box-shadow: .8px 0 0 var(--edge-d), -.5px 0 0 rgba(40, 20, 5, .22); border-radius: 1px; }
+.stack-x i.d { background: var(--edge-d); }
+.stack-x i.l { background: var(--edge-l); }
+.stack-x::after { content: ""; position: absolute; inset: 0; pointer-events: none; }
+.stack-r::after { background: linear-gradient(to right, rgba(30, 15, 5, .42), transparent 34%, transparent 82%, rgba(30, 15, 5, .2)); }
+.stack-l::after { background: linear-gradient(to left, rgba(30, 15, 5, .42), transparent 34%, transparent 82%, rgba(30, 15, 5, .2)); }
+.stack-y { top: 100%; height: var(--stack-y); margin-top: -1px; }
+.stack-bl { left: calc(-1 * var(--stack) * var(--depth-l)); right: 50%; transition: left .9s cubic-bezier(.4, 0, .2, 1); }
+.stack-br { left: 50%; right: calc(-1 * var(--stack) * var(--depth-r)); transition: right .9s cubic-bezier(.4, 0, .2, 1); }
+.stack-y i { position: absolute; height: 1.7px; background: var(--edge); box-shadow: 0 .8px 0 var(--edge-d); }
+.stack-y i.d { background: var(--edge-d); }
+.stack-y i.l { background: var(--edge-l); }
+
+/* Loose sheets someone tucked in years ago, poking out past the stack */
+.loose { position: absolute; pointer-events: none; opacity: calc(var(--age) * 1.1); box-shadow: 1px 1px 3px rgba(30, 15, 5, .4); }
+.loose-a { width: 100px; height: 118px; right: calc(100% - 40px + var(--stack) * var(--depth-l) - 34px); bottom: 12%; background: url(../img/grain.png), #e9c9b4; rotate: -3.5deg; }
+.loose-b { width: 100px; height: 92px; left: calc(100% - 40px + var(--stack) * var(--depth-r) - 28px); bottom: 7%; background: url(../img/grain.png), #d8d9a8; rotate: 2.6deg; clip-path: polygon(0 0, 100% 3%, 96% 22%, 100% 44%, 94% 61%, 99% 100%, 0 100%); }
+
+/* Pages */
+.page { position: absolute; top: 0; bottom: 0; width: 50%; }
+.page-l { left: 0; }
+.page-r { right: 0; }
+.under { position: absolute; inset: 0; background: var(--under); border-radius: var(--radius); box-shadow: 0 1px 3px rgba(40, 20, 5, .3); }
+.sheet { position: absolute; inset: 0; overflow: hidden; background: var(--paper); border-radius: var(--radius); box-shadow: inset 0 0 calc(24px + 70px * var(--age)) rgba(var(--burn), calc(.04 + .2 * var(--age))); isolation: isolate; }
+/* Grain and stains. Age controls how much of it you see. */
+.sheet::before { content: ""; position: absolute; inset: 0; z-index: -1; background: url(../img/grain.png), url(../img/stain.webp) center / cover no-repeat; opacity: calc(.1 + .45 * var(--age)); pointer-events: none; }
+.sheet-l::before { background-position: 0 0, 30% 70%; background-size: auto, 130% 130%; }
+/* The page curves down into the spine */
+.sheet::after { content: ""; position: absolute; inset: 0; z-index: 3; pointer-events: none; }
+.sheet-r::after { background: linear-gradient(to right, rgba(40, 20, 5, .32), rgba(40, 20, 5, .08) 26px, transparent 74px); }
+.sheet-l::after { background: linear-gradient(to left, rgba(40, 20, 5, .32), rgba(40, 20, 5, .08) 26px, transparent 74px); }
+.body { position: absolute; inset: 0; z-index: 1; display: flex; flex-direction: column; min-height: 0; }
+.body > * { flex: 1; min-height: 0; }
+
+/* Old sticky tape holding a rip together */
+.repair { position: absolute; right: -10px; width: 136px; height: 54px; z-index: 4; pointer-events: none; transform: rotate(-7deg); background: linear-gradient(180deg, rgba(232, 200, 120, .46), rgba(214, 178, 100, .5)); box-shadow: inset 0 0 0 1px rgba(140, 100, 40, .16), 0 1px 2px rgba(60, 30, 5, .18); opacity: calc((var(--age) - .55) * 2.6); }
+
+.gutter { position: absolute; left: 50%; top: 0; bottom: 0; width: 60px; margin-left: -30px; z-index: 5; pointer-events: none; background: linear-gradient(to right, transparent, rgba(40, 20, 5, .1) 30%, rgba(26, 12, 3, .5) 49%, rgba(26, 12, 3, .56) 50%, rgba(40, 20, 5, .1) 70%, transparent); }
+.stitches { position: absolute; left: 50%; top: 0; width: 12px; height: 100%; margin-left: -6px; fill: none; stroke: var(--thread); stroke-width: 2.4; stroke-linecap: round; vector-effect: non-scaling-stroke; opacity: .9; }
+
+.ribbon { position: absolute; left: calc(50% - 30px); bottom: -52px; width: 17px; height: 104px; z-index: 6; pointer-events: none; background: linear-gradient(90deg, color-mix(in srgb, var(--accent) 86%, #000), var(--accent) 40%, color-mix(in srgb, var(--accent) 84%, #fff)); clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 88%, 0 100%); transform-origin: 50% 0; animation: ribbon 7s ease-in-out infinite; box-shadow: 1px 2px 4px rgba(0, 0, 0, .3); }
+@keyframes ribbon { 0%, 100% { transform: rotate(-.9deg); } 50% { transform: rotate(1.1deg); } }
+
+/* Index tabs. A tab lives on the left of the book once you have turned past its section. */
+.tabs { position: absolute; inset: 0; pointer-events: none; z-index: 7; }
+.tab { position: absolute; top: calc(30px + var(--i) * (var(--tab-h) + 7px)); width: calc(var(--tab-out) + 10px); height: var(--tab-h); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; pointer-events: auto; border: 1px solid rgba(60, 35, 10, .3); color: var(--tab-ink); font-family: var(--font-ui); font-size: 12.5px; line-height: 1.05; background: url(../img/grain.png), var(--tab-1); box-shadow: 1px 2px 4px rgba(20, 8, 0, .35); transition: transform .2s cubic-bezier(.3, 1.4, .5, 1), opacity .2s, box-shadow .2s, filter .2s; }
+.tab:nth-child(4n + 2) { background-color: var(--tab-2); }
+.tab:nth-child(4n + 3) { background-color: var(--tab-3); }
+.tab:nth-child(4n + 4) { background-color: var(--tab-4); }
+.tab .i { width: 18px; height: 18px; }
+.tab[data-side="right"] { left: calc(100% + var(--stack) * var(--depth-r) - 8px); border-left: 0; border-radius: 0 10px 10px 0; rotate: .5deg; }
+.tab[data-side="left"] { right: calc(100% + var(--stack) * var(--depth-l) - 8px); border-right: 0; border-radius: 10px 0 0 10px; rotate: -.5deg; }
+.tab:nth-child(odd)[data-side="right"] { rotate: -.7deg; }
+.tab:nth-child(odd)[data-side="left"] { rotate: .7deg; }
+.tab[data-side="right"]:hover { transform: translateX(6px); box-shadow: 3px 3px 7px rgba(20, 8, 0, .4); }
+.tab[data-side="left"]:hover { transform: translateX(-6px); box-shadow: -3px 3px 7px rgba(20, 8, 0, .4); }
+.tab:active { filter: brightness(.95); }
+.tab.moving[data-side="right"] { transform: translateX(-30px); opacity: 0; }
+.tab.moving[data-side="left"] { transform: translateX(30px); opacity: 0; }
+.tab.active { background-color: var(--marker); font-weight: 700; z-index: 2; box-shadow: 3px 3px 9px rgba(20, 8, 0, .5); }
+.tab.active[data-side="right"] { transform: translateX(7px); }
+
+/* Turning */
+.flip-stage { position: absolute; inset: 0; z-index: 20; pointer-events: none; }
+.leaf-stage { position: absolute; inset: 0; perspective: 2700px; perspective-origin: 50% 42%; }
+.leaf { position: absolute; top: 0; transform-style: preserve-3d; }
+.strip { position: absolute; top: 0; height: 100%; transform-style: preserve-3d; transform-origin: 0 50%; will-change: transform; }
+.face { position: absolute; inset: 0; overflow: hidden; contain: paint; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.face.f { right: -.7px; }
+.face.b { left: -.7px; transform: rotateY(180deg); }
+.slice { position: absolute; top: 0; }
+.slice > * { position: absolute; inset: 0; }
+.shade { position: absolute; inset: 0; background: #33406e; opacity: 0; pointer-events: none; }
+.cast { position: absolute; top: 0; bottom: 0; width: 50%; opacity: 0; pointer-events: none; }
+.cast-r { left: 50%; transform-origin: 0 50%; background: linear-gradient(to right, rgba(24, 10, 2, .6), rgba(24, 10, 2, .2) 76%, transparent); }
+.cast-l { left: 0; transform-origin: 100% 50%; background: linear-gradient(to left, rgba(24, 10, 2, .6), rgba(24, 10, 2, .2) 76%, transparent); }
+.frozen *, .frozen *::before, .frozen *::after { animation: none !important; transition: none !important; }
+.turn-cover { z-index: 2; }
+.turning .page { pointer-events: none; }
+.turning .tabs { pointer-events: none; }
+
+/* The closed book, before the cover lifts */
+.left-part { transition: opacity .5s ease; }
+.closed .left-part { opacity: 0; }
+.cover-art { position: absolute; inset: -8px calc(-1 * var(--stack) - var(--board)) calc(-1 * var(--stack-y) - var(--board)) 0; display: none; place-items: center; z-index: 8; border-radius: 0 8px 10px 0; background: url(../img/grain.png), url(../img/stain.webp) center / cover, linear-gradient(135deg, var(--cover), var(--cover-2)); box-shadow: inset 0 0 0 1px rgba(255, 225, 180, .14), inset 12px 0 26px rgba(0, 0, 0, .34), inset 0 0 60px rgba(0, 0, 0, .3); }
+.closed:not(.opening) .cover-art, .slice .cover-art { display: grid; }
+.slice .cover-art { inset: 0; }
+.closed .tabs { opacity: 0; }
+.tabs { transition: opacity .5s .5s; }
+.plate { display: grid; justify-items: center; gap: 2px; padding: 18px 44px; background: url(../img/grain.png), var(--plate); color: var(--plate-ink); border: 2px solid color-mix(in srgb, var(--plate-ink) 60%, transparent); outline: 1px solid color-mix(in srgb, var(--plate-ink) 40%, transparent); outline-offset: -7px; border-radius: 4px; box-shadow: 1px 3px 8px rgba(0, 0, 0, .45); rotate: -.8deg; }
+.plate strong { font-family: var(--font-head); font-size: calc(46px * var(--scale-head, 1)); font-weight: 400; line-height: 1.05; }
+.plate-kicker, .plate-vol { font-family: 'Special Elite', monospace; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; }
+
+/* Look-specific physical details */
+[data-look="bubblegum"] .sheet, [data-look="mochi"] .sheet, [data-look="y2k"] .sheet { outline: 3px solid #fff; outline-offset: -3px; }
+[data-look="bubblegum"] .stitches, [data-look="mochi"] .stitches, [data-look="y2k"] .stitches { stroke-width: 9; stroke-dasharray: 1 26; opacity: 1; }
+[data-look="bubblegum"] .tab, [data-look="mochi"] .tab, [data-look="y2k"] .tab { border: 2.5px solid #fff; box-shadow: 0 3px 0 rgba(120, 30, 90, .28), 1px 4px 8px rgba(120, 30, 90, .2); }
+[data-look="y2k"] .board { background: linear-gradient(135deg, #ffb3f0, #b3f4ff 30%, #d4c2ff 55%, #fff2a8 80%, #ffb3f0); background-size: 300% 300%; animation: holo-board 9s ease-in-out infinite; }
+@keyframes holo-board { 0%, 100% { background-position: 0 0; } 50% { background-position: 100% 100%; } }
+[data-look="moonlit"] .sheet { box-shadow: inset 0 0 90px rgba(0, 0, 12, .55), inset 0 0 0 1px rgba(229, 192, 123, .18); }
+[data-look="moonlit"] .sheet::before { opacity: .12; }
+[data-look="moonlit"] .gutter { background: linear-gradient(to right, transparent, rgba(0, 0, 10, .34) 30%, rgba(0, 0, 10, .75) 50%, rgba(0, 0, 10, .34) 70%, transparent); }
+[data-look="moonlit"] .board::before, [data-look="moonlit"] .board::after { background: linear-gradient(135deg, #f2d48f, #b98d42); }
+[data-look="casefile"] .tab { border-radius: 2px; box-shadow: 1px 2px 3px rgba(0, 0, 0, .4); font-family: 'Special Elite', monospace; }
+[data-look="casefile"] .board::before, [data-look="casefile"] .board::after { display: none; }
+
+/* One page at a time: chosen in the Studio, or on a small screen */
+.side-toggle { display: none; position: absolute; top: -2px; left: 8px; z-index: 9; }
+[data-bookmode="single"] .page-l, [data-narrow] .page-l { display: none; }
+[data-bookmode="single"] .page-r, [data-narrow] .page-r { width: 100%; }
+[data-bookmode="single"] .board-l, [data-narrow] .board-l, [data-bookmode="single"] .gutter, [data-narrow] .gutter, [data-bookmode="single"] .ribbon, [data-narrow] .ribbon, [data-bookmode="single"] .stack-l, [data-narrow] .stack-l, [data-bookmode="single"] .stack-bl, [data-narrow] .stack-bl { display: none; }
+[data-bookmode="single"] .board-r, [data-narrow] .board-r { left: -8px; border-radius: 8px; }
+[data-bookmode="single"] .stack-br, [data-narrow] .stack-br { left: 0; }
+[data-bookmode="single"] .sheet-r::after, [data-narrow] .sheet-r::after { background: none; }
+[data-bookmode="single"] .side-toggle, [data-narrow] .side-toggle { display: inline-flex; }
+[data-bookmode="single"] .book.show-left .page-l, [data-narrow] .book.show-left .page-l { display: block; width: 100%; z-index: 8; animation: side-in .28s cubic-bezier(.2, .8, .2, 1); }
+@keyframes side-in { from { transform: translateX(-24px); opacity: 0; } }
+
+[data-narrow] { --tab-out: 0px; --stack: 12px; --board: 4px; --stack-y: 7px; }
+[data-narrow] .book { --book-w: calc(100vw - 30px); --book-h: calc(100dvh - 88px); transform: translateY(-34px); }
+[data-narrow] .tabs { position: fixed; left: 0; right: 0; top: auto; bottom: 0; height: 62px; display: flex; gap: 2px; padding: 4px 4px 0; overflow-x: auto; scrollbar-width: none; pointer-events: auto; background: color-mix(in srgb, var(--desk-base) 76%, transparent); }
+[data-narrow] .tab { position: static; flex: 1 0 58px; width: auto; height: 54px; border-radius: 10px 10px 0 0; rotate: 0deg !important; transform: none !important; opacity: 1 !important; font-size: 11.5px; border: 1px solid rgba(60, 35, 10, .3); border-bottom: 0; }
+[data-narrow] .ribbon { display: none; }
+
+[data-turning] #floaties { visibility: hidden; }
