@@ -11,6 +11,13 @@
 
 Panna is a local RAG chatbot in the body of a thick, torn old register. Add a PDF or TXT, ask a question, and read the answer with the source text beside it. If the document does not say it, Panna refuses instead of inventing an answer.
 
+<picture>
+  <source media="(max-width: 600px) and (prefers-color-scheme: dark)" srcset="https://shailesh-stats.vercel.app/api/plate?name=repo&amp;repo=panna-rag&amp;theme=dark&amp;w=m">
+  <source media="(max-width: 600px)" srcset="https://shailesh-stats.vercel.app/api/plate?name=repo&amp;repo=panna-rag&amp;theme=light&amp;w=m">
+  <source media="(prefers-color-scheme: dark)" srcset="https://shailesh-stats.vercel.app/api/plate?name=repo&amp;repo=panna-rag&amp;theme=dark">
+  <img src="https://shailesh-stats.vercel.app/api/plate?name=repo&amp;repo=panna-rag&amp;theme=light" width="100%" alt="Commits per week and languages for Panna, drawn live from GitHub.">
+</picture>
+
 ## How it works
 
 <p align="center">
