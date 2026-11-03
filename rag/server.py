@@ -1,4 +1,6 @@
 """Chatbot interface: a Gradio Server. Gradio runs the app and the chat queue; web/ is the custom frontend."""
+import base64
+import hmac
 import json
 import os
 import threading
@@ -6,7 +8,7 @@ from collections.abc import Iterator
 
 import gradio as gr
 from fastapi import HTTPException, UploadFile
-from fastapi.responses import FileResponse, JSONResponse, StreamingResponse
+from fastapi.responses import FileResponse, JSONResponse, PlainTextResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, ValidationError
 from starlette.middleware.trustedhost import TrustedHostMiddleware
@@ -20,7 +22,35 @@ from .store import store
 
 server = gr.Server(title="Panna", docs_url=None, redoc_url=None, openapi_url=None)
 # The app only ever runs on this machine. This stops other websites reaching it through DNS rebinding.
-server.add_middleware(TrustedHostMiddleware, allowed_hosts=["127.0.0.1", "localhost"])
+# PANNA_PASSWORD turns on sharing through a Cloudflare tunnel, and only ever behind that password.
+PASSWORD = os.environ.get("PANNA_PASSWORD", "")
+
+
+class PasswordGate:
+    """HTTP Basic auth for the whole app, so a shared link alone is not enough to open it."""
+
+    def __init__(self, app):
+        self.app = app
+
+    async def __call__(self, scope, receive, send):
+        # Gradio calls startup-events on itself while launching, with no password.
+        if scope["type"] not in ("http", "websocket") or scope["path"].endswith("/startup-events"):
+            return await self.app(scope, receive, send)
+        header = dict(scope["headers"]).get(b"authorization", b"")
+        try:
+            given = base64.b64decode(header.removeprefix(b"Basic ")).decode().partition(":")[2]
+        except ValueError:
+            given = ""
+        if scope["type"] == "http" and not hmac.compare_digest(given.encode(), PASSWORD.encode()):
+            return await PlainTextResponse("Password needed.", 401, {"WWW-Authenticate": 'Basic realm="Panna"'})(scope, receive, send)
+        return await self.app(scope, receive, send)
+
+
+hosts = ["127.0.0.1", "localhost"]
+if PASSWORD:
+    server.add_middleware(PasswordGate)
+    hosts.append("*.trycloudflare.com")
+server.add_middleware(TrustedHostMiddleware, allowed_hosts=hosts)
 
 
 def clean_history(history: list) -> list[dict]:
